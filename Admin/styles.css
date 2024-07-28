@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.logo img {
+    height: 50px;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.overview {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.stats-panel {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.quick-links {
+    margin-top: 20px;
+}
+
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links ul li {
+    margin-bottom: 10px;
+}
+
+.quick-links ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+
+    width: 100%;
+    bottom: 0;
+}
+
+
+/* Manage users */
+
+.manage-users {
+    padding: 20px;
+}
+
+.manage-users form {
+    margin-bottom: 30px;
+}
+
+.manage-users fieldset {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.manage-users label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.manage-users input, .manage-users select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.manage-users button {
+    padding: 10px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.manage-users button:hover {
+    background-color: #555;
+}
+
+.manage-users table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.manage-users table, .manage-users th, .manage-users td {
+    border: 1px solid #ddd;
+}
+
+.manage-users th, .manage-users td {
+    padding: 10px;
+    text-align: left;
+}
+
+.manage-users th {
+    background-color: #f4f4f4;
+}
+
+
