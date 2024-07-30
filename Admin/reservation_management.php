@@ -1,17 +1,11 @@
 <?php include('../partials/menu.php'); ?>
 
-<?php
-session_start();
 
-if (!isset($_SESSION['admin_id'])) {
-    header('Location: login.php');
-    exit;
-}
-?>
 
 <?php
 // Include the database connection file
 include('db_connect.php');
+include('session_check.php');
 
 // Handle reservation confirmation, modification, or cancellation
 if (isset($_GET['action']) && isset($_GET['id'])) {

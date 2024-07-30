@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">LOGO</div>
+            <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Reservation</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Special Offers</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="cart-btn">Cart <span id="cart-count">0</span></button>
+                <button class="login-btn">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-container">
+        <h1 class="menu-title">Our Menu</h1>
+
+        <div class="menu-grid">
+            <div class="menu-item" data-name="Bruschetta" data-price="8">
+                <h3>Bruschetta</h3>
+                <p>Grilled bread garlic, tomatoes, olive oil.</p>
+                <div class="menu-item-details">
+                    <span class="menu-item-price">$8</span>
+                    <div class="menu-item-quantity">
+                        <label for="bruschetta-quantity">Qty:</label>
+                        <input type="number" id="bruschetta-quantity" name="bruschetta-quantity" min="1" value="1">
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-name="Stuffed Mushrooms" data-price="10">
+                <h3>Stuffed Mushrooms</h3>
+                <p>Mushrooms filled with cheese and herbs.</p>
+                <div class="menu-item-details">
+                    <span class="menu-item-price">$10</span>
+                    <div class="menu-item-quantity">
+                        <label for="stuffed-mushrooms-quantity">Qty:</label>
+                        <input type="number" id="stuffed-mushrooms-quantity" name="stuffed-mushrooms-quantity" min="1" value="1">
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-name="Grilled Salmon" data-price="20">
+                <h3>Grilled Salmon</h3>
+                <p>Served with a side of vegetables.</p>
+                <div class="menu-item-details">
+                    <span class="menu-item-price">$20</span>
+                    <div class="menu-item-quantity">
+                        <label for="grilled-salmon-quantity">Qty:</label>
+                        <input type="number" id="grilled-salmon-quantity" name="grilled-salmon-quantity" min="1" value="1">
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-name="Spaghetti Carbonara" data-price="18">
+                <h3>Spaghetti Carbonara</h3>
+                <p>Classic Italian pasta with creamy sauce.</p>
+                <div class="menu-item-details">
+                    <span class="menu-item-price">$18</span>
+                    <div class="menu-item-quantity">
+                        <label for="spaghetti-carbonara-quantity">Qty:</label>
+                        <input type="number" id="spaghetti-carbonara-quantity" name="spaghetti-carbonara-quantity" min="1" value="1">
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-name="Tiramisu" data-price="7">
+                <h3>Tiramisu</h3>
+                <p>Traditional Italian dessert with coffee.</p>
+                <div class="menu-item-details">
+                    <span class="menu-item-price">$7</span>
+                    <div class="menu-item-quantity">
+                        <label for="tiramisu-quantity">Qty:</label>
+                        <input type="number" id="tiramisu-quantity" name="tiramisu-quantity" min="1" value="1">
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="menu-item" data-name="Panna Cotta" data-price="6">
+                <h3>Panna Cotta</h3>
+                <p>Creamy dessert with a hint of vanilla.</p>
+                <div class="menu-item-details">
+                    <span class="menu-item-price">$6</span>
+                    <div class="menu-item-quantity">
+                        <label for="panna-cotta-quantity">Qty:</label>
+                        <input type="number" id="panna-cotta-quantity" name="panna-cotta-quantity" min="1" value="1">
+                    </div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-sidebar-header">
+            <h2>Cart</h2>
+            <button id="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-items-container">
+            <!-- Cart items will be added here -->
+        </div>
+        <div class="cart-sidebar-footer">
+            <p>Total: $<span id="cart-total">0</span></p>
+            <button class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <script src="menu.js"></script>
+</body>
+</html>

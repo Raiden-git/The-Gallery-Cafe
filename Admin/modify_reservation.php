@@ -49,6 +49,8 @@ if (isset($_GET['id'])) {
     die('Reservation ID is required.');
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
