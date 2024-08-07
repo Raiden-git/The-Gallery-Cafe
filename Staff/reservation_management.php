@@ -48,13 +48,60 @@ unset($_SESSION['message']); // Clear the message after displaying it
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation Management</title>
     <style>
-        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        th, td { padding: 10px; border: 1px solid #ddd; }
-        th { background-color: #f4f4f4; }
-        .actions a { margin-right: 10px; }
-        .message { padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; }
-        .success { background-color: #d4edda; color: #155724; }
-        .error { background-color: #f8d7da; color: #721c24; }
+        <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            color: #f5f5f5;
+        }
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .message.success {
+            background-color: #4caf50;
+            color: #ffffff;
+        }
+        .message.error {
+            background-color: #f44336;
+            color: #ffffff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #444;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+        }
+        .actions a {
+            color: #1e90ff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .actions a:hover {
+            text-decoration: underline;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
     </style>
 </head>
 <body>

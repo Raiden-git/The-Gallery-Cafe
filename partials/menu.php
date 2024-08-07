@@ -9,17 +9,20 @@
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png" alt="The Gallery Café Logo">
+            
         </div>
-        <nav>
+        <nav class="navbar">
             <ul>
                 <li><a href="dashboard.php">Dashboard</a></li>
                 <li><a href="manage_users.php">Manage Users</a></li>
-                <li><a href="food_management.php">Food Management</a></li>
+                <li><a href="admin_dashboard.php">Food Management</a></li>
+                <li><a href="featured_menu.php">Featured Food</a></li>
+                <li><a href="promotions.php">Promos</a></li>
                 <li><a href="reservation_management.php">Reservation Management</a></li>
                 <li><a href="order_management.php">Order Management</a></li>
-                <li><a href="website_settings.php">Website Settings</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="manage_special_events.php">Special Event Manage</a></li>
+
             </ul>
+                <a class="logout" href="logout.php">Logout</a>
         </nav>
     </header>

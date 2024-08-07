@@ -1,29 +1,26 @@
 <?php
-// delete_user.php
-
-// Include the database connection file
 include('db_connect.php');
+include('session_check.php');
 
-// Check if user ID is provided
-if (isset($_GET['id'])) {
-    $user_id = $_GET['id'];
+$id = $_GET['id'];
+$role = $_GET['role'];
 
-    $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
-    $stmt->bind_param("i", $user_id);
+if ($role == 'operational') {
+    $stmt = $conn->prepare("DELETE FROM operational_staff WHERE id = ?");
+} else {
+    $stmt = $conn->prepare("DELETE FROM customers WHERE id = ?");
+}
+$stmt->bind_param("i", $id);
 
-    if ($stmt->execute()) {
-        echo '<p>User deleted successfully.</p>';
-    } else {
-        echo '<p>Error: ' . $stmt->error . '</p>';
-    }
-
-    $stmt->close();
+if ($stmt->execute()) {
+    echo '<p class="success">User deleted successfully.</p>';
+} else {
+    echo '<p class="error">Error: ' . $stmt->error . '</p>';
 }
 
-// Close connection
+$stmt->close();
 $conn->close();
 
-// Redirect back to manage_users.php
 header("Location: manage_users.php");
-exit();
+exit;
 ?>

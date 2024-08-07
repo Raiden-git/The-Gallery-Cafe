@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Forum', cursive;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .logo{
+            position: relative;
+            color: white; 
+            font-size: 60px; 
+            font-family: Italianno;
+            font-weight: 400;
+            top: 0px;
+            left: 90px;
+        }
+        .login-container {
+            display: flex;
+            width: 80%;
+            max-width: 1000px;
+            background-color: #1e1e1e;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .login-form {
+            padding: 40px;
+            width: 50%;
+            position: relative;
+            top: 70px;
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid hsl(38, 61%, 73%);
+            background-color: #333;
+            color: #fff;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #555;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid hsl(38, 61%, 73%);
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: hsl(38, 61%, 73%);
+            color: #121212;
+        }
+        .image-container {
+            width: 50%;
+            height: 100vh;
+            background: url('img/special-dish-banner.jpg') no-repeat center center;
+            background-size: cover;
+        }
+        .register-link {
+            display: block;
+            margin-top: 20px;
+            color: #f3f3f3;
+            text-align: left;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .register-link:hover {
+            text-decoration: none;
+            color: hsl(38, 61%, 73%);
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var usernameOrEmail = document.getElementById('usernameOrEmail').value;
+            var password = document.getElementById('password').value;
+
+            // Validate username or email
+            if (usernameOrEmail.trim() === "") {
+                alert("Username or Email must be filled out");
+                return false;
+            }
+
+            // Validate password
+            if (password.trim() === "") {
+                alert("Password must be filled out");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <div class="logo">The Gallery Café</div>
+            <h2>Login</h2>
+            <form action="login.php" method="post" onsubmit="return validateForm()">
+                <div class="input-group">
+                    <label for="usernameOrEmail">Username or Email:</label>
+                    <input type="text" id="usernameOrEmail" name="usernameOrEmail" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <a class="register-link" href="registration.html">Don't have an account? Register here</a>
+        </div>
+        <div class="image-container"></div>
+    </div>
+</body>
+</html>

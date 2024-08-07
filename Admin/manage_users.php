@@ -194,16 +194,22 @@ $conn->close();
     <form action="manage_users.php" method="POST">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
+
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
+
         <label for="full_name">Full Name:</label>
         <input type="text" id="full_name" name="full_name" required>
+
         <label for="contact_number">Contact Number:</label>
         <input type="text" id="contact_number" name="contact_number" required>
+
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
+
         <label for="address">Address:</label>
         <input type="text" id="address" name="address" required>
+
         <label for="gender">Gender:</label>
         <select id="gender" name="gender" required>
             <option value="male">Male</option>
@@ -213,6 +219,7 @@ $conn->close();
         <select id="role" name="role" required>
             <option value="operational">Operational Staff</option>
             <option value="customer">Customer</option>
+            
         </select>
         <button type="submit" name="create_user">Create User</button>
     </form>
