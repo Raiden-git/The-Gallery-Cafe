@@ -185,9 +185,8 @@ $result = mysqli_query($conn, $sql);
         <ul class="nav-menu">
             <li><a href="customer_dashboard.php">Home</a></li>
             <li><a href="view_products_customer.php">Menu</a></li>
-            <li><a href="#">Promotions</a></li>
             <li><a href="special_events.php">Special Events</a></li>
-            <li><a href="contact_us.html">Contact Us</a></li>
+            <li><a href="contact_us.php">Contact Us</a></li>
         </ul>
 
         <a class="profile" href="profile.php">Profile</a>

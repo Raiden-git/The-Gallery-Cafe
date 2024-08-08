@@ -333,7 +333,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <ul class="nav-menu">
                 <li><a href="customer_dashboard.php">Home</a></li>
                 <li><a href="view_products_customer.php">Menu</a></li>
-                <li><a href="#">Special Events</a></li>
+                <li><a href="special_events.php">Special Events</a></li>
                 <li><a href="contact_us.php">Contact Us</a></li>
             </ul>
 
