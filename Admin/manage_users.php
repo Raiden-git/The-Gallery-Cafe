@@ -80,117 +80,177 @@ $conn->close();
     <title>Manage Users</title>
     <style>
         body {
+            background-color: #121212;
+            color: #ffffff;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        h2 {
-            color: #333;
+
+        h1, h2, h3 {
+            color: #bb86fc;
+            
         }
-        .success {
-            color: green;
-        }
-        .error {
-            color: red;
-        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-left: auto; 
+            margin-right: auto;
         }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
+
         th, td {
-            padding: 10px;
+            padding: 15px;
             text-align: left;
+            border-bottom: 1px solid #333;
         }
+
         th {
-            background-color: #f2f2f2;
+            background-color: #1f1f1f;
         }
+
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #1f1f1f;
         }
+
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #333;
         }
-        .search-form {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        .search-form input[type="text"] {
-            padding: 5px;
-            width: 200px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-        }
-        .search-form select {
-            padding: 5px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            margin-left: 10px;
-        }
-        .search-form button {
+
+        a {
+            color: #bb86fc;
+            text-decoration: none;
             padding: 5px 10px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        .search-form button:hover {
-            background-color: #0056b3;
-        }
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ddd;
             border-radius: 5px;
-            max-width: 600px;
-            margin: 0 auto;
+            background-color: #333;
+            transition: background-color 0.3s ease;
         }
-        .form-container label {
+
+        a:hover {
+            background-color: #bb86fc;
+            color: #121212;
+        }
+
+        button {
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #7f39fb;
+        }
+
+        input[type="text"] {
+            background-color: #333;
+            color: #ffffff;
+            border: 1px solid #555;
+            padding: 10px;
+            border-radius: 5px;
+            /* width: calc(100% - 22px); */
+        }
+
+        form p {
+            margin: 15px 0;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    width: 300px;
+
+    
+}
+
+h3 {
+            color: #bb86fc;
+        }
+
+        form {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            width: 600px;
+        }
+
+        label {
             display: block;
-            margin-bottom: 5px;
+            margin: 10px 0 5px;
             font-weight: bold;
         }
-        .form-container input, .form-container select {
-            width: 100%;
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"],
+        input[type="email"],
+        input[type="file"],
+        textarea, select {
+            
             padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #333;
+            color: #ffffff;
+            border: 1px solid #555;
         }
-        .form-container button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
+
+        input[type="file"] {
+            padding: 5px;
         }
-        .form-container button:hover {
-            background-color: #0056b3;
+
+        textarea {
+            height: 100px;
+        }
+
+        footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+
+    width: 100%;
+    bottom: 0;
+}
+
+.search-form {
+    margin-bottom: 20px;
+}
+
+.view-events-container {
+        max-width: 1300px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            if (localStorage.getItem('scrollPos')) {
-                window.scrollTo(0, localStorage.getItem('scrollPos'));
-            }
-            document.querySelectorAll('form').forEach(form => {
-                form.addEventListener('submit', () => {
-                    localStorage.setItem('scrollPos', window.scrollY);
-                });
-            });
-        });
-    </script>
+   
 </head>
 <body>
 
 <!-- HTML form for creating a new user -->
+ <div class="view-events-container">
+<h2 >Create New User</h2>
+    </div>
 <div class="form-container">
-    <h2>Create New User</h2>
+    
     <form action="manage_users.php" method="POST">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
@@ -225,7 +285,10 @@ $conn->close();
     </form>
 </div>
 
+    </br>
+<div class="view-events-container">
 <h2>Operational Staff</h2>
+    </div>
 <form class="search-form" method="POST" action="manage_users.php">
     <input type="text" name="staff_search_query" placeholder="Search operational staff" value="<?php echo htmlspecialchars($staff_search_query); ?>">
     <select name="staff_search_filter">
@@ -262,7 +325,10 @@ if ($staff_result) {
 }
 ?>
 
+</br>
+<div class="view-events-container">
 <h2>Customers</h2>
+</div>
 <form class="search-form" method="POST" action="manage_users.php">
     <input type="text" name="customer_search_query" placeholder="Search customers" value="<?php echo htmlspecialchars($customer_search_query); ?>">
     <select name="customer_search_filter">

@@ -55,13 +55,87 @@ unset($_SESSION['message']); // Clear the message after displaying it
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Management</title>
     <style>
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; border: 1px solid #ddd; }
-        th { background-color: #f4f4f4; }
-        .actions a { margin-right: 10px; }
-        .message { padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; }
-        .success { background-color: #d4edda; color: #155724; }
-        .error { background-color: #f8d7da; color: #721c24; }
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #1f1f1f;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1f1f1f;
+        }
+
+        tr:hover {
+            background-color: #333;
+        }
+
+        a {
+            color: #bb86fc;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #bb86fc;
+            color: #121212;
+        }
+
+        button {
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #7f39fb;
+        }
+        
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        h3 {
+            color: #ffffff;
+        }
+
+        footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+
+    width: 100%;
+    bottom: 0;
+}
     </style>
 </head>
 <body>

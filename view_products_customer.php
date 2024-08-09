@@ -34,6 +34,12 @@ if (!empty($sql_conditions)) {
 }
 $result = mysqli_query($conn, $sql);
 
+
+// Fetch products from the beverages table
+$beverage_sql = "SELECT id, name, description, price, stock, image FROM beverages";
+$beverage_result = mysqli_query($conn, $beverage_sql);
+
+
 // Handle adding products to the cart or pre-ordering
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_id = $_POST['product_id'];
@@ -81,247 +87,247 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Available Products</title>
     <style>
         body {
-            background-color: #121212;
-            color: #FFFFFF;
-            font-family: 'DM Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-    width: 100%;
-    background-color: #333;
-    padding: 10px 0;
-}
-
-        .navbar {
-
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.logo {
-    position: relative;
-   color: white; 
-   font-size: 50px; 
-   font-family: Italianno;
-   font-weight: 400;
-   top: 0px;
-   left: 40px;
-}
-
-.nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+    background-color: #121212;
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
     margin: 0;
     padding: 0;
 }
 
+header {
+width: 100%;
+background-color: #333;
+padding: 10px 0;
+}
+
+.navbar {
+
+max-width: 1200px;
+width: 100%;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+}
+
+.logo {
+position: relative;
+color: white; 
+font-size: 50px; 
+font-family: Italianno;
+font-weight: 400;
+top: 0px;
+left: 40px;
+}
+
+.nav-menu {
+list-style: none;
+display: flex;
+gap: 20px;
+margin: 0;
+padding: 0;
+}
+
 .nav-menu li {
-    display: inline;
-    position: relative;
-    left:50px;
+display: inline;
+position: relative;
+left:50px;
 }
 
 .nav-menu a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1em;
+color: #fff;
+text-decoration: none;
+font-size: 1em;
 }
 
 .nav-buttons {
-    display: flex;
-    gap: 10px;
+display: flex;
+gap: 10px;
 }
 
 .profile {
-  position: relative;
-  left: 50px;
-  text-decoration: none;
-  color:white;
-  background-color: #333;
-  border: 1px solid hsl(38, 61%, 73%);
-  border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
-  margin: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+position: relative;
+left: 50px;
+text-decoration: none;
+color:white;
+background-color: #333;
+border: 1px solid hsl(38, 61%, 73%);
+border-radius: 20px;
+padding: 10px 20px;
+font-size: 16px;
+margin: 5px;
+transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .profile:hover {
-  color: hsl(38, 61%, 73%);
+color: hsl(38, 61%, 73%);
 }
 
 .logout {
-  position: relative;
-  left: 55px;
-  text-decoration: none;
-  background-color: hsl(38, 61%, 73%);
-  padding: 8px 17px;
-  color: black;
-  border: 1px solid hsl(38, 61%, 73%);
-  font-size: 16px;
-  margin: 5px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+position: relative;
+left: 55px;
+text-decoration: none;
+background-color: hsl(38, 61%, 73%);
+padding: 8px 17px;
+color: black;
+border: 1px solid hsl(38, 61%, 73%);
+font-size: 16px;
+margin: 5px;
+transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .logout:hover {
-  background-color: #333;
-  color: white;
+background-color: #333;
+color: white;
 }
 
-        h2 {
-            text-align: center;
-            margin-top: 20px;
-        }
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
 
-        .form-container {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
-        }
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
 
-        .form-container input[type="text"], .form-container select, .form-container button {
-            margin: 0 10px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-        }
+.form-container input[type="text"], .form-container select, .form-container button {
+    margin: 0 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
 
-        .form-container input[type="text"] {
-            width: 200px;
-        }
+.form-container input[type="text"] {
+    width: 200px;
+}
 
-        .form-container select {
-            width: 150px;
-        }
+.form-container select {
+    width: 150px;
+}
 
-        .form-container button {
-            background-color: #333;
-            color: #FFFFFF;
-            border:1px solid hsl(38, 61%, 73%);
-            cursor: pointer;
-        }
+.form-container button {
+    background-color: #333;
+    color: #FFFFFF;
+    border:1px solid hsl(38, 61%, 73%);
+    cursor: pointer;
+}
 
-        .form-container button:hover {
-            background-color: hsl(38, 61%, 73%);
-            color:black;
-        }
+.form-container button:hover {
+    background-color: hsl(38, 61%, 73%);
+    color:black;
+}
 
-        .products-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-        }
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
 
-        .product-card {
-            background-color: #1E1E1E;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            width: 300px;
-            overflow: hidden;
-            text-align: center;
-            border:1px solid hsl(38, 61%, 73%);
-        }
+.product-card {
+    
+    background-color: #1E1E1E;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    width: 300px;
+    overflow: hidden;
+    text-align: center;
+    border:1px solid hsl(38, 61%, 73%);
+}
 
-        .product-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
 
-        .product-card h3 {
-            margin: 15px 0 5px;
-            font-size:25px;
-        }
+.product-card h3 {
+    margin: 15px 0 5px;
+    font-size:25px;
+}
 
-        .product-card p {
-            margin: 5px 0;
-            color: #BBBBBB;
-        }
+.product-card p {
+    margin: 5px 0;
+    color: #BBBBBB;
+}
 
-        .product-card .price {
-            color: hsl(38, 61%, 73%);
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
+.product-card .price {
+    color: hsl(38, 61%, 73%);
+    font-size: 1.2em;
+    margin: 10px 0;
+}
 
-        .product-card form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px 0;
-        }
+.product-card form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
 
-        .product-card input[type="number"] {
-            width: 60px;
-            padding: 5px;
-            margin-bottom: 10px;
-            border: none;
-            border-radius: 5px;
-        }
+.product-card input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
 
-        .product-card button {
-  background-color: hsl(38, 61%, 73%);
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin: 5px 0;
+.product-card button {
+background-color: hsl(38, 61%, 73%);
+color: black;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+margin: 5px 0;
 }
 
 .product-card button:hover {
-  background-color: #4044414f;
-  border: 1px solid hsl(38, 61%, 73%);
-  color:white;
+background-color: #4044414f;
+border: 1px solid hsl(38, 61%, 73%);
+color:white;
 }
 
-        .fixed-cart-link {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            background-color: #1DB954;
-            color: #FFFFFF;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-weight: bold;
-        }
+.fixed-cart-link {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #1DB954;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
 
-        .fixed-cart-link:hover {
-            background-color: #1AA34A;
-        }
+.fixed-cart-link:hover {
+    background-color: #1AA34A;
+}
 
-        .cart-link {
-            display: block;
-            text-align: center;
-            margin: 20px 0;
-            color: #1DB954;
-            text-decoration: none;
-        }
+.cart-link {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    color: #1DB954;
+    text-decoration: none;
+}
 
-        .cart-link:hover {
-            color: #1AA34A;
-        }
+.cart-link:hover {
+    color: #1AA34A;
+}
 
-        .footer-bottom{
-            display: flex;
-            justify-content:center;
-            align-items:center;
-            padding:20px;
-            background-color: #333;
-        }
-
+.footer-bottom{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background-color: #333;
+}
 
     </style>
 </head>
@@ -349,19 +355,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <h2>Available Products</h2>
     <div class="form-container">
-        <form method="get" action="view_products_customer.php">
-            <input type="text" name="search" value="<?php echo htmlspecialchars($search_query); ?>" placeholder="Search by name">
-            <select name="category">
-                <option value="">All Categories</option>
-                <option value="Sri lankan" <?php if ($filter_category == "Sri lankan") echo "selected"; ?>>Srilankan</option>
-                <option value="Tamil" <?php if ($filter_category == "Tamil") echo "selected"; ?>>Tamil</option>
-                <option value="Chinese" <?php if ($filter_category == "Chinese") echo "selected"; ?>>Chinese</option>
-                <option value="English" <?php if ($filter_category == "English") echo "selected"; ?>>English</option>
-                <!-- Add more categories as needed -->
-            </select>
-            <button type="submit">Search & Filter</button>
-        </form>
-    </div>
+    <form method="get" action="view_products_customer.php" id="filterForm">
+        <input type="text" name="search" onchange="document.getElementById('filterForm').submit();" value="<?php echo htmlspecialchars($search_query); ?>" placeholder="Search by name">
+        <select name="category" onchange="document.getElementById('filterForm').submit();">
+            <option value="">All Categories</option>
+            <?php
+            // Fetch available categories from the database
+            $category_query = "SELECT DISTINCT category FROM menu ORDER BY category ASC";
+            $category_result = mysqli_query($conn, $category_query);
+
+            // Loop through each category and display it as an option
+            while ($category_row = mysqli_fetch_assoc($category_result)) {
+                $category_name = htmlspecialchars($category_row['category']);
+                $selected = ($filter_category == $category_name) ? "selected" : "";
+                echo "<option value=\"$category_name\" $selected>$category_name</option>";
+            }
+            ?>
+        </select>
+    </form>
+</div>
     <div class="products-container">
         <?php
         // Check if there are any products in the result set
@@ -389,11 +401,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Display a message if no products are available
             echo '<p>No products available.</p>';
         }
+
         // Close the database connection
         mysqli_close($conn);
         ?>
-    </div>
+   </div>
     
+    </br>
+   <h2>Beverages</h2> 
+   <div class="products-container">
+    
+    <?php
+    // Display beverage items
+    while ($row = mysqli_fetch_assoc($beverage_result)) {
+        echo '<div class="product-card">';
+        echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" alt="Product Image"/>';
+        echo '<h3>' . $row['name'] . '</h3>';
+        echo '<p>' . $row['description'] . '</p>';
+        echo '<p class="price">Rs.' . $row['price'] . '</p>';
+        echo '<form method="post" action="view_products_customer.php">';
+        echo '<input type="hidden" name="product_id" value="' . $row['id'] . '">';
+        echo '<input type="number" name="quantity" value="1" min="1" max="' . $row['stock'] . '" required>';
+        echo '<button type="submit" name="add_to_cart">Add to Cart</button>';
+        echo '<button type="submit" name="pre_order">Pre-Order</button>';
+        echo '</form>';
+        echo '</div>';
+    }
+    ?>
+</div>
+
 
     <a href="view_cart.php" class="fixed-cart-link">View Cart</a>
     <footer>
@@ -404,7 +440,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       © 2024 The Gallery Café. All Rights Reserved
     </p>
 
-  </div>
+    </div>
+
 </footer>
  
 </body>

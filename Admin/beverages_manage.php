@@ -26,18 +26,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imgContent = addslashes(file_get_contents($image));
 
     // Insert new product into the database
-    $sql = "INSERT INTO menu (name, description, price, category, stock, image) VALUES ('$name', '$description', '$price', '$category', '$stock', '$imgContent')";
+    $sql = "INSERT INTO beverages (name, description, price, stock, image) VALUES ('$name', '$description', '$price', '$stock', '$imgContent')";
 
     // Execute the query and check if it was successful
     if (mysqli_query($conn, $sql)) {
-        echo "<script>alert('Product added successfully!'); window.location.href = 'admin_dashboard.php';</script>";
+        echo "<script>alert('Product added successfully!'); window.location.href = 'beverages_manage.php';</script>";
     } else {
-        echo "<script>alert('Error: " . mysqli_error($conn) . "'); window.location.href = 'admin_dashboard.php';</script>";
+        echo "<script>alert('Error: " . mysqli_error($conn) . "'); window.location.href = 'beverages_manage.php';</script>";
     }
 }
 
 // Query to select products
-$sql = "SELECT id, name, description, price, category, stock, image FROM menu";
+$sql = "SELECT id, name, description, price, stock, image FROM beverages";
 $result = mysqli_query($conn, $sql);
 
 // Close the database connection
@@ -55,7 +55,6 @@ mysqli_close($conn);
             var name = document.getElementById('name').value;
             var description = document.getElementById('description').value;
             var price = document.getElementById('price').value;
-            var category = document.getElementById('category').value;
             var stock = document.getElementById('stock').value;
             var image = document.getElementById('image').value;
 
@@ -69,11 +68,6 @@ mysqli_close($conn);
             }
             if (price == "" || isNaN(price) || price <= 0) {
                 alert("Valid product price must be filled out");
-                return false;
-            }
-
-            if (category == "") {
-                alert("Food Category must be filled out");
                 return false;
             }
 
@@ -271,12 +265,12 @@ mysqli_close($conn);
 
     width: 100%;
     bottom: 0;
-}
+        }
+        
     </style>
 </head>
 <body>
-
-    <div class="view-products-container">
+<div class="view-products-container">
     <h2>Additional Food Manage Options</h2>
     <div class="manage">
     <a href="beverages_manage.php">Beverages Manager</a>
@@ -284,18 +278,17 @@ mysqli_close($conn);
     <a href="promotions.php">Promotion Manager</a>
     </div>
     </div>
-    </br></br>
-
-    <h3 class="view-products-container">Add New Product</h3></br> 
-    <form action="admin_dashboard.php" method="post" enctype="multipart/form-data" onsubmit="return validateProductForm()">
+    </br>
+    <div class="view-products-container">
+    <h3>Add New Product</h3> 
+    </div>
+    <form action="beverages_manage.php" method="post" enctype="multipart/form-data" onsubmit="return validateProductForm()">
         <label for="name">Product Name:</label>
         <input type="text" id="name" name="name" required>
         <label for="description">Product Description:</label>
         <textarea id="description" name="description" required></textarea>
         <label for="price">Product Price:</label>
         <input type="number" step="0.01" id="price" name="price" required>
-        <label for="category">Category:</label>
-        <input type="text" id="category" name="category" required>
         <label for="stock">Product Stock:</label>
         <input type="number" id="stock" name="stock" required>
         <label for="image">Product Image:</label>
@@ -314,7 +307,6 @@ mysqli_close($conn);
                 <th>Name</th>
                 <th>Description</th>
                 <th>Price</th>
-                <th>Category</th>
                 <th>Stock</th>
                 <th>Image</th>
                 <th>Actions</th>
@@ -329,7 +321,6 @@ mysqli_close($conn);
                     echo "<td>" . $row['name'] . "</td>";
                     echo "<td>" . $row['description'] . "</td>";
                     echo "<td>" . $row['price'] . "</td>";
-                    echo "<td>" . $row['category'] . "</td>";
                     echo "<td>" . $row['stock'] . "</td>";
                     echo '<td><img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" alt="Product Image"/></td>';
                     echo '<td>';

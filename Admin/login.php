@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Password is correct
             $_SESSION['admin_id'] = $id;
             $_SESSION['admin_username'] = $username;
-            header('Location: dashboard.php');
+            header('Location: manage_users.php');
             exit;
         } else {
             // Incorrect password

@@ -41,7 +41,6 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
     <script>
         function validateProductForm() {
             var name = document.getElementById('name').value;
@@ -99,22 +98,12 @@ mysqli_close($conn);
     </script>
 
     <style>
-        .logout {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-
-        .logout a {
-            text-decoration: none;
-            color: white;
-            background-color: #ff4b4b;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        .logout a:hover {
-            background-color: #ff0000;
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         .view-products-container {
@@ -122,9 +111,135 @@ mysqli_close($conn);
         max-width: 1200px;
         margin: auto;
         display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        }
+
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #1f1f1f;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1f1f1f;
+        }
+
+        tr:hover {
+            background-color: #333;
+        }
+
+        a {
+            color: #bb86fc;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #333;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #bb86fc;
+            color: #121212;
+        }
+
+        button {
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #7f39fb;
+        }
+        
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        form {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        width: 300px;   
+        }
+
+        h3 {
+            color: #ffffff;
+        }
+
+        form {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            width: 600px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="file"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #333;
+            color: #ffffff;
+            border: 1px solid #555;
+        }
+
+        input[type="file"] {
+            padding: 5px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        .manage{
+            display: flex;
+            justify-content: space-around;
+            width: 50%;
+            margin-top: 20px;
+        }
+        
+        .manage a{
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #333;
+            color: #bb86fc;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
         }
 
         img {
@@ -133,45 +248,30 @@ mysqli_close($conn);
             object-fit: cover;
         }
 
-        th {
-            background-color: #4CAF50;
-            color: white;
+        footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+
+    width: 100%;
+    bottom: 0;
         }
-
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        form {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    width: 300px;
-
-    
-}
-
-        
     </style>
 </head>
 <body>
-    <div class="logout">
-        <a href="logout.php">Logout</a>
+<div class="view-products-container">
+    <h2>Additional Food Manage Options</h2>
+    <div class="manage">
+    <a href="beverages_manage.php">Beverages Manager</a>
+    <a href="featured_menu.php">Featured Food Manager</a>
+    <a href="promotions.php">Promotion Manager</a>
     </div>
-
+    </div>
+    </br>
+<div class="view-products-container">
     <h3>Add New Product</h3>
+    </div>
     <form action="featured_menu.php" method="post" enctype="multipart/form-data" onsubmit="return validateProductForm()">
 
         <label for="name">Product Name:</label>
@@ -230,6 +330,7 @@ mysqli_close($conn);
             // Close the database connection
             /* mysqli_close($conn); */
             ?>
+</table>
+        </div>
 
-</body>
-</html>
+        <?php include('../partials/footer.php'); ?>

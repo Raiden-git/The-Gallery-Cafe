@@ -64,7 +64,9 @@ $cart = $_SESSION['cart'];
 $product_ids = implode(',', array_keys($cart));
 
 // Query to get product details for items in the cart
-$sql = "SELECT id, name, price FROM menu WHERE id IN ($product_ids)";
+$sql = "SELECT id, name, price FROM menu WHERE id IN ($product_ids)
+UNION
+SELECT id, name, price FROM beverages WHERE id IN ($product_ids)";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -335,3 +337,4 @@ $result = mysqli_query($conn, $sql);
 
 </body>
 </html>
+
